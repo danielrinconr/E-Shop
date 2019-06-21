@@ -11,21 +11,20 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 // ============================
 //  Base de datos
 // ============================
-// let urlDB;
+// const localClient = {
+//     user: "postgres",
+//     password: "admin",
+//     host: "localhost",
+//     port: 5432,
+//     database: "E-shopdb"
+// };
+// process.env.localClient = "postgres://postgres:admin@localhost/E-shopdb"
+let urlDB;
 
-// if (process.env.NODE_ENV === 'dev') {
-//     urlDB = 'mongodb://localhost:27017/cafe';
-// } else {
-//     urlDB = process.env.MONGO_URI;
-// }
+if (process.env.NODE_ENV === 'dev') {
+    urlDB = 'postgres://postgres:admin@localhost/E-shopdb';
+} else {
+    urlDB = process.env.MONGO_URI;
+}
 
-// process.env.URLDB = urlDB;
-const localClient = {
-    user: "postgres",
-    password: "admin",
-    host: "localhost",
-    port: 5432,
-    database: "E-shopdb"
-};
-
-module.exports = localClient;
+process.env.URLDB = urlDB;
