@@ -4,74 +4,65 @@ const _ = require('underscore');
 const Usuario = require('../models/usuario');
 const app = express();
 
+const Client = require('pg').Client;
+const ham = require('../config/config');
+const client = new Client(ham);
+
+
 app.get('/', function(req, res) {
     res.json('Hello world');
 });
 
 app.get('/usuario', function(req, res) {
-    let desde = req.query.desde || 0;
-    desde = Number(desde);
-    let limite = req.query.limite || 5;
-    limite = Number(limite);
-    Usuario.find({ estado: true }, 'nombre email role estado google img')
-        .skip(desde)
-        .limit(limite)
-        .exec((err, usuarios) => {
-            if (err) {
-                return res.status(400).json({
-                    ok: false,
-                    err
-                });
-            }
-            Usuario.count({ estado: true }, (err, conteo) => {
-                res.json({
-                    ok: true,
-                    usuarios,
-                    cuantos: conteo
-                });
+    client.connect()
+        .then(() => client.query('select * from employees'))
+        .then(results => {
+            res.json({
+                ok: true,
+                usuario: results.rows
             });
-        });
+        })
+        .catch(err => res.status(400).json({
+            ok: false,
+            err
+        }))
 });
 
 app.post('/usuario', function(req, res) {
     let body = req.body;
-    let usuario = new Usuario({
-        nombre: body.nombre,
-        email: body.email,
-        // TODO: Check body.password != null.
-        password: bcrypt.hashSync(body.password, 10),
-        // password: body.password,
-        role: body.role
-    });
-    usuario.save((err, usuarioDB) => {
-        if (err) {
-            return res.status(400).json({
-                ok: false,
-                err
+    let usuario = {
+        id: body.id,
+        nombre: body.nombre
+    };
+    client.connect()
+        .then(() => client.query(`INSERT INTO employees VALUES (${usuario.id}, '${usuario.nombre}')`))
+        .then(results => {
+            res.json({
+                ok: true,
+                usuario
             });
-        }
-        res.json({
-            ok: true,
-            usuario: usuarioDB
-        });
-    });
+        })
+        .catch(err => res.status(400).json({
+            ok: false,
+            err
+        }))
 });
 
 app.put('/usuario/:id', function(req, res) {
-    let id = req.params.id;
-    let body = _.pick(req.body, ['nombre', 'email', 'img', 'role', 'estado']);
-    Usuario.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, usuarioDB) => {
-        if (err) {
-            return res.status(400).json({
-                ok: false,
-                err
+    // let body = _.pick(req.body, ['nombre', 'email', 'img', 'role', 'estado']);
+    let body = req.body;
+    client.connect()
+        .then(() => client.query(`INSERT INTO employees VALUES (${usuario.id}, '${usuario.nombre}')`))
+        .then(results => {
+            res.json({
+                ok: true,
+                usuario: body
             });
-        }
-        res.json({
-            ok: true,
-            usuario: usuarioDB
-        });
-    })
+        })
+        .catch(err => res.status(400).json({
+            ok: false,
+            err
+        }))
 });
 
 app.delete('/usuario/:id', function(req, res) {
