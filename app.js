@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.use(require('./routes/usuario'));
+app.use(require('./routes/empresa'));
 
 app.listen(process.env.PORT, () => { console.log('Escuchando puerto: ', process.env.PORT); });
 

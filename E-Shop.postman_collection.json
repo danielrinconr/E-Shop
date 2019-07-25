@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "915820b2-c8a9-48dd-ad02-05f2501a45bd",
+		"name": "E-Shop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/usuario"
+			},
+			"response": []
+		},
+		{
+			"name": "Update user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "Test 2",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:3000/usuario/3"
+			},
+			"response": []
+		},
+		{
+			"name": "Create user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cedula",
+							"value": "1018123457",
+							"type": "text"
+						},
+						{
+							"key": "nombres",
+							"value": "Test 4",
+							"type": "text"
+						},
+						{
+							"key": "apellidos",
+							"value": "-",
+							"type": "text"
+						},
+						{
+							"key": "genero",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "telefono_celular",
+							"value": "3191234567",
+							"type": "text"
+						},
+						{
+							"key": "correo_electronico",
+							"value": "test4@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "nombre_usuario",
+							"value": "test4",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_rol",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:3000/usuario"
+			},
+			"response": []
+		},
+		{
+			"name": "Empresa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/empresa"
+			},
+			"response": []
+		},
+		{
+			"name": "Empresa",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_empresa",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "nit",
+							"value": "0123456781",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "hamana",
+							"type": "text"
+						},
+						{
+							"key": "logo",
+							"value": "hamana.png",
+							"type": "text"
+						},
+						{
+							"key": "direccion",
+							"value": "cl.1#1-1",
+							"type": "text"
+						},
+						{
+							"key": "pagina_web",
+							"value": "hamana.com",
+							"type": "text"
+						},
+						{
+							"key": "faceboock",
+							"value": "a",
+							"type": "text"
+						},
+						{
+							"key": "instagram",
+							"value": "b",
+							"type": "text"
+						},
+						{
+							"key": "twitter",
+							"value": "c",
+							"type": "text"
+						},
+						{
+							"key": "codigo_color1",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "codigo_color2",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_ciudad",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "fecha_creacion",
+							"value": "19/07/19",
+							"type": "text"
+						},
+						{
+							"key": "activo",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:3000/empresa"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "91bf9fa5-e121-4809-ad54-b2752a7fdb92",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "09c2c042-6583-4f68-907c-d8ea43046776",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
