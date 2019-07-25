@@ -24,7 +24,7 @@ let urlDB;
 if (process.env.NODE_ENV === 'dev') {
     urlDB = 'postgres://postgres:admin@localhost/E-shopdb';
 } else {
-    urlDB = process.env.MONGO_URI;
+    urlDB = process.env.DATABASE_URL;
 }
 
 process.env.URLDB = urlDB;

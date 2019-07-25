@@ -15,9 +15,15 @@ app.use(bodyParser.json())
 app.use(require('./routes/usuario'));
 app.use(require('./routes/empresa'));
 
-app.listen(process.env.PORT, () => { console.log('Escuchando puerto: ', process.env.PORT); });
+app.listen(process.env.PORT, () => {
+    console.log('Escuchando puerto: ', process.env.PORT);
+});
 
-const client = new Client(process.env.URLDB);
+// const client = new Client(process.env.URLDB);
+const client = new Client({
+    connectionString: process.env.URLDB,
+    ssl: process.env.NODE_ENV !== 'dev',
+});
 
 client.connect()
     .then(() => console.log('Connected successfuly'))
