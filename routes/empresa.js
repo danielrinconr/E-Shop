@@ -47,7 +47,7 @@ app.post('/empresa', function(req, res) {
         fecha_creacion: body.fecha_creacion,
         activo: body.activo,
     };
-    const query = `INSERT INTO empresa(nit,nombre,logo,direccion,pagina_web,faceboock,instagram,twitter,codigo_color1,codigo_color2,id_ciudad,estado,fecha_creacion,activo) VALUES (${emp.nit},'${emp.nombre}','${emp.logo}','${emp.direccion}','${emp.pagina_web}','${emp.faceboock}','${emp.instagram}','${emp.twitter}','${emp.codigo_color1}','${emp.codigo_color2}',${emp.id_ciudad},${emp.estado},'${emp.fecha_creacion}',${emp.activo})`;
+    const query = `INSERT INTO empresa(nit,nombre,logo,direccion,pagina_web,faceboock,instagram,twitter,codigo_color1,codigo_color2,id_ciudad,estado,fecha_creacion,activo) VALUES (${emp.nit},'${emp.nombre}','${emp.logo}','${emp.direccion}','${emp.pagina_web}','${emp.faceboock}','${emp.instagram}','${emp.twitter}','${emp.codigo_color1}','${emp.codigo_color2}',${emp.id_ciudad},${emp.estado},DATE'${emp.fecha_creacion}',${emp.activo})`;
     // const query = "INSERT INTO empresa(id_empresa,nit,nombre,logo,direccion,pagina_web,faceboock,instagram,twitter,codigo_color1,codigo_color2,id_ciudad,estado,fecha_creacion,activo) VALUES (2,0123456780,'hamana','hamana.png','cl.1#1-1','hamana.com','a','b','c','1','1',1,1,'19/07/19',1);"
     console.log(query);
     client.connect()
@@ -55,7 +55,7 @@ app.post('/empresa', function(req, res) {
         .then(() => {
             res.json({
                 ok: true,
-                empresa: us
+                empresa: emp
             });
         })
         .catch(err => res.status(400).json({
@@ -79,7 +79,7 @@ app.put('/empresa/:id', function(req, res) {
         .then(() => {
             res.json({
                 ok: true,
-                empresa
+                empresa: emp
             });
         })
         .catch(err => res.status(400).json({
