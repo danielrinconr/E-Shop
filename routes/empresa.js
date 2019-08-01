@@ -6,10 +6,6 @@ const app = express();
 
 const Client = require('pg').Client;
 
-app.get('/', function(req, res) {
-    res.json('Hello world');
-});
-
 app.get('/empresa', function(req, res) {
     const client = new Client(process.env.URLDB);
     client.connect()

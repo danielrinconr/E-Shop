@@ -6,14 +6,10 @@ const app = express();
 
 const Client = require('pg').Client;
 
-app.get('/', function(req, res) {
-    res.json('Hello world');
-});
-
 app.get('/usuario', function(req, res) {
     const client = new Client(process.env.URLDB);
     client.connect()
-        .then(() => client.query("select * from usuarios WHERE estado = '1'"))
+        .then(() => client.query("select * from shop.usuarios"))
         .then(results => {
             res.json({
                 ok: true,
