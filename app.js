@@ -15,6 +15,7 @@ app.use(bodyParser.json())
 app.use(require('./routes/usuario'));
 app.use(require('./routes/empresa'));
 
+// process.env.PORT = 5432
 app.listen(process.env.PORT, () => {
     console.log('Escuchando puerto: ', process.env.PORT);
 });
@@ -23,6 +24,7 @@ app.listen(process.env.PORT, () => {
 const client = new Client({
     connectionString: process.env.URLDB,
     ssl: process.env.NODE_ENV !== 'dev',
+    // ssl: true
 });
 
 client.connect()
