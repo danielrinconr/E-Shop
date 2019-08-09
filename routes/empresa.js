@@ -61,10 +61,12 @@ app.post('/empresa', function(req, res) {
         .then(() => client.query(query))
         .then((ham) => {
             resp_ = ham.rows[0].sp_209_insert;
-            console.log(resp_[resp_.length - 2] === '1');
+            ok_ = resp_[resp_.length - 2] === '1';
+            msg_ = ok_ ? resp_ : "Consulte la table 'log_errores' para más información";
+            console.log(ok_);
             res.json({
-                ok: true,
-                empresa: emp
+                ok: ok_,
+                msg: msg_
             });
         })
         .catch(err => res.status(400).json({
