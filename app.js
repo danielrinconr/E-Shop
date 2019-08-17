@@ -12,8 +12,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json 
 app.use(bodyParser.json())
 
-app.use(require('./routes/usuario'));
+app.use(require('./routes/usuarios'));
 app.use(require('./routes/empresa'));
+app.use(require('./routes/menus'));
+app.use(require('./routes/roles'));
+app.use(require('./routes/permisos'));
+app.use(require('./routes/usuarios'));
 
 // process.env.PORT = 5432
 app.listen(process.env.PORT, () => {
