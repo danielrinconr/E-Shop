@@ -121,7 +121,43 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://localhost:3000/empresa"
+				"url": "{{url}}/empresa"
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{url}}/usuarios"
+			},
+			"response": []
+		},
+		{
+			"name": "Menu",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{url}}/menus"
+			},
+			"response": []
+		},
+		{
+			"name": "Roles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{url}}/roles"
+			},
+			"response": []
+		},
+		{
+			"name": "Permisos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{url}}/permisos"
 			},
 			"response": []
 		},
@@ -143,11 +179,12 @@
 						{
 							"key": "id_empresa",
 							"value": "3",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "nit",
-							"value": "0123456781",
+							"value": "26",
 							"type": "text"
 						},
 						{
@@ -203,21 +240,213 @@
 						{
 							"key": "estado",
 							"value": "1",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "fecha_creacion",
-							"value": "19/07/19",
-							"type": "text"
+							"value": "2015-05-20",
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "activo",
+							"value": "1",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "id_usuario",
 							"value": "1",
 							"type": "text"
 						}
 					]
 				},
-				"url": "http://localhost:3000/empresa"
+				"url": "{{url}}/empresa"
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "cedula",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "ham",
+							"type": "text"
+						},
+						{
+							"key": "apellido",
+							"value": "ham",
+							"type": "text"
+						},
+						{
+							"key": "genero",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "telefono",
+							"value": "1234567",
+							"type": "text"
+						},
+						{
+							"key": "correo_electronico",
+							"value": "ham1@ham.com",
+							"type": "text"
+						},
+						{
+							"key": "nombre_usuario",
+							"value": "us4",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "id_rol",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_empresa",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_usuario",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": "{{url}}/usuarios"
+			},
+			"response": []
+		},
+		{
+			"name": "Menus",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "menu1",
+							"type": "text"
+						},
+						{
+							"key": "mensaje",
+							"value": "msg1",
+							"type": "text"
+						},
+						{
+							"key": "id_menu_papa",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_usuario",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": "{{url}}/menus"
+			},
+			"response": []
+		},
+		{
+			"name": "Roles",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "rol1",
+							"type": "text"
+						},
+						{
+							"key": "id_usuario",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": "{{url}}/roles"
+			},
+			"response": []
+		},
+		{
+			"name": "Permisos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id_rol",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "id_menu",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "id_usuario",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": "{{url}}/permisos"
 			},
 			"response": []
 		}
